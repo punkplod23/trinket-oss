@@ -3,7 +3,7 @@
     "port": 8300,
     "corsOrigins": ["http://localhost:3000", "http://localhost:3001"],
     "generatedDir": "/tmp/r-generated",
-    "generatedUrl": "http://localhost:8300/r-generated",
+    "generatedUrl": "http://localhost:8080/r-generated",
     "cleanup": {
       "enabled": true,
       "maxAgeHours": 24,
@@ -11,6 +11,6 @@
     }
   },
   "shells": [
-    "http://localhost:8310"
+    "http://r-shell:8010"
   ]
 }

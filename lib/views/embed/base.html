@@ -31,6 +31,8 @@
         vendorHost        : '{{ config.aws.buckets.vendorassets.host }}',
         python3_api       : '{% if serverside.python3.api %}{{ serverside.python3.api }}{% else %}{{ config.app.serverside.python3.api.default }}{% endif %}',
         java_api          : '{% if serverside.java.api %}{{ serverside.java.api }}{% else %}{{ config.app.serverside.java8.api.default }}{% endif %}',
+        go_api            : '{% if serverside.go.api %}{{ serverside.go.api }}{% else %}{{ config.app.serverside.go.api.default }}{% endif %}',
+        rust_api          : '{% if serverside.rust.api %}{{ serverside.rust.api }}{% else %}{{ config.app.serverside.rust.api.default }}{% endif %}',
         R_api             : '{% if serverside.R.api %}{{ serverside.R.api }}{% else %}{{ config.app.serverside.r3.api.default }}{% endif %}',
         pygame_api        : '{% if serverside.pygame.api %}{{ serverside.pygame.api }}{% else %}{{ config.app.serverside.pygame.api.default }}{% endif %}',
         logClientCodeError : {{config.app.embed.logClientCodeError}},

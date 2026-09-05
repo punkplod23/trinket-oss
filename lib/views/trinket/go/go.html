@@ -1,0 +1,5 @@
+{% extends "base.html" %}
+{% block title %}{{ trinket.name if trinket.name else "Your Go Trinket" }}{% endblock %}
+{% block content %}
+<div id="trinket-row" class="preserve"><div id="trinket-container" style="height: 500px"><iframe id="trinket-iframe" src="/embed/go{% if trinket.id %}/{{trinket.id}}{% endif %}" width="100%" height="100%" frameborder="0" allowfullscreen></iframe></div></div>
+{% endblock %}

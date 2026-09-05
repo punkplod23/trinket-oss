@@ -1,0 +1,148 @@
+body[id="embed_content_go"],
+body[id="embed_content_rust"] {
+  background: #f4f6f8;
+}
+
+.compiled-editor {
+  position: relative;
+  display: block;
+  min-width: 0;
+  overflow: hidden;
+  height: 100%;
+  min-height: 560px;
+  background: #ffffff;
+  color: #263238;
+  font-family: Lato, Helvetica, Arial, sans-serif;
+}
+
+.compiled-toolbar {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  width: 60%;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 54px;
+  padding: 0 22px;
+  border-bottom: 1px solid #d8dee4;
+  background: #ffffff;
+}
+
+.compiled-toolbar strong {
+  color: #263238;
+  font-size: 1.15rem;
+  font-weight: 900;
+  letter-spacing: 0;
+}
+
+.compiled-toolbar button {
+  min-width: 88px;
+  min-height: 34px;
+  padding: 7px 16px;
+  border: 0;
+  border-radius: 3px;
+  background: #1877c9;
+  color: #ffffff;
+  cursor: pointer;
+  font: 900 0.9rem Lato, Helvetica, Arial, sans-serif;
+}
+
+.compiled-toolbar button:hover {
+  background: #125d9e;
+}
+
+.compiled-toolbar button:disabled {
+  background: #9aa8b3;
+  cursor: wait;
+}
+
+#compiled-code,
+#compiled-output {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  font: 500 0.95rem/1.6 "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  letter-spacing: 0;
+  tab-size: 4;
+}
+
+#compiled-code {
+  left: 0;
+  width: 60%;
+  display: block;
+  resize: none;
+  height: 100%;
+  padding: 76px 22px 22px;
+  outline: 0;
+  background: #fbfcfd;
+  color: #263238;
+  caret-color: #1877c9;
+}
+
+#compiled-code:focus {
+  box-shadow: inset 3px 0 0 #1877c9;
+}
+
+#compiled-output {
+  right: 0;
+  width: 40%;
+  overflow: auto;
+  height: 100%;
+  padding: 58px 22px 16px;
+  border-top: 0;
+  border-left: 1px solid #cfd5d9;
+  background: #ffffff;
+  color: #263238;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+#compiled-output:empty::before {
+  color: #9aa3a8;
+  content: "Output will appear here";
+}
+
+#compiled-output .compiled-error {
+  color: #ff9c9c;
+}
+
+@media screen and (max-width: 640px) {
+  .compiled-editor {
+    min-height: 520px;
+  }
+
+  .compiled-toolbar {
+    width: 100%;
+    padding: 0 14px;
+  }
+
+  #compiled-code {
+    top: 54px;
+    bottom: 40%;
+    width: 100%;
+  }
+
+  #compiled-output {
+    top: 60%;
+    bottom: 0;
+    width: 100%;
+    border-top: 1px solid #cfd5d9;
+    border-left: 0;
+    padding-top: 16px;
+  }
+
+  #compiled-code,
+  #compiled-output {
+    padding: 14px;
+    font-size: 0.86rem;
+  }
+}

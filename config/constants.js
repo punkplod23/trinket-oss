@@ -10,6 +10,8 @@ var constants = {
     , 'blocks'
     , 'glowscript'
     , 'java'
+    , 'go'
+    , 'rust'
     , 'glowscript-blocks'
     , 'R'
     , 'pygame'

@@ -30,6 +30,153 @@ services:
       - mongodb_data:/data/db
     networks:
       - trinket
+  serverside-nginx:
+    build: ./serverside/nginx
+    ports:
+      - 8080:80
+    volumes:
+      - python-generated:/var/www/generated/python:ro
+      - java-generated:/var/www/generated/java:ro
+      - r-generated:/var/www/generated/r:ro
+      - go-generated:/var/www/generated/go:ro
+      - rust-generated:/var/www/generated/rust:ro
+      - pygame-generated:/var/www/generated/pygame:ro
+    depends_on:
+      - python3-manager
+      - java-manager
+      - r-manager
+      - go-manager
+      - rust-manager
+      - pygame-manager
+    networks:
+      - trinket
+  python3-shell:
+    build: ./serverside/python/shell
+    expose:
+      - 8010
+    volumes:
+      - python-sessions:/tmp/sessions
+    networks:
+      - trinket
+  python3-manager:
+    build: ./serverside/python/manager
+    expose:
+      - 8100
+    volumes:
+      - python-generated:/tmp/python-generated
+    depends_on:
+      - python3-shell
+    environment:
+      - NODE_ENV=production
+    networks:
+      - trinket
+  java-shell:
+    build: ./serverside/java/shell
+    expose:
+      - 8010
+    volumes:
+      - java-sessions:/tmp/sessions
+    networks:
+      - trinket
+  java-manager:
+    build: ./serverside/java/manager
+    expose:
+      - 8200
+    volumes:
+      - java-generated:/tmp/java-generated
+    depends_on:
+      - java-shell
+    environment:
+      - NODE_ENV=production
+    networks:
+      - trinket
+  r-shell:
+    build: ./serverside/r/shell
+    expose:
+      - 8010
+    volumes:
+      - r-sessions:/tmp/sessions
+    networks:
+      - trinket
+  r-manager:
+    build: ./serverside/r/manager
+    expose:
+      - 8300
+    volumes:
+      - r-generated:/tmp/r-generated
+    depends_on:
+      - r-shell
+    environment:
+      - NODE_ENV=production
+    networks:
+      - trinket
+  go-shell:
+    build:
+      context: .
+      dockerfile: serverside/go/shell/Dockerfile
+    expose:
+      - 8010
+    volumes:
+      - go-sessions:/tmp/sessions
+    networks:
+      - trinket
+  go-manager:
+    build: ./serverside/java/manager
+    expose:
+      - 8400
+    volumes:
+      - go-generated:/tmp/go-generated
+    depends_on:
+      - go-shell
+    environment:
+      NODE_ENV: production
+      NODE_CONFIG: '{"manager":{"port":8400,"generatedDir":"/tmp/go-generated","generatedUrl":"http://localhost:8080/go-generated"},"shells":["http://go-shell:8010"]}'
+    networks:
+      - trinket
+  rust-shell:
+    build:
+      context: .
+      dockerfile: serverside/rust/shell/Dockerfile
+    expose:
+      - 8010
+    volumes:
+      - rust-sessions:/tmp/sessions
+    networks:
+      - trinket
+  rust-manager:
+    build: ./serverside/java/manager
+    expose:
+      - 8500
+    volumes:
+      - rust-generated:/tmp/rust-generated
+    depends_on:
+      - rust-shell
+    environment:
+      NODE_ENV: production
+      NODE_CONFIG: '{"manager":{"port":8500,"generatedDir":"/tmp/rust-generated","generatedUrl":"http://localhost:8080/rust-generated"},"shells":["http://rust-shell:8010"]}'
+    networks:
+      - trinket
+  pygame-worker:
+    build: ./serverside/pygame/worker
+    expose:
+      - 8010
+      - 6080
+    volumes:
+      - pygame-sessions:/tmp/pygame
+    networks:
+      - trinket
+  pygame-manager:
+    build: ./serverside/pygame/manager
+    expose:
+      - 8100
+    volumes:
+      - pygame-generated:/tmp/pygame-generated
+    depends_on:
+      - pygame-worker
+    environment:
+      - NODE_ENV=production
+    networks:
+      - trinket
 networks:
   trinket:
     driver: bridge
@@ -38,3 +185,15 @@ volumes:
   node_modules:
   public_components:
   mongodb_data:
+  python-sessions:
+  python-generated:
+  java-sessions:
+  java-generated:
+  r-sessions:
+  r-generated:
+  go-sessions:
+  go-generated:
+  rust-sessions:
+  rust-generated:
+  pygame-sessions:
+  pygame-generated:

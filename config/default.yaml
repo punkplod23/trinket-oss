@@ -5,17 +5,19 @@ features:
   trinkets:
     # Client-side languages - work out of the box
     python: true       # Skulpt-based Python 2/3 (enabled by default)
-    html: false        # HTML/CSS/JS
-    blocks: false      # Block-based coding
-    glowscript: false  # 3D graphics with GlowScript/VPython
-    glowscript-blocks: false
-    console: false     # Python console/REPL
-    music: false       # EarSketch music coding
+    html: true        # HTML/CSS/JS
+    blocks: true      # Block-based coding
+    glowscript: true  # 3D graphics with GlowScript/VPython
+    glowscript-blocks: true
+    console: true     # Python console/REPL
+    music: true       # EarSketch music coding
     # Server-side languages - require additional backend services
-    python3: false     # Requires Python 3 backend
-    java: false        # Requires Java backend
-    pygame: false      # Requires Pygame backend
-    R: false           # Requires R backend
+    python3: true     # Requires Python 3 backend
+    java: true        # Requires Java backend
+    pygame: true      # Requires Pygame backend
+    R: true           # Requires R backend
+    go: true          # Requires Go backend
+    rust: true        # Requires Rust backend
 
 app:
   siteName: 'Trinket'
@@ -332,6 +334,8 @@ app:
       python3: python3
       R: r3
       java: java8
+      go: go
+      rust: rust
       pygame: pygame
     # All server-side types go through nginx reverse proxy on port 8080
     # Python 3
@@ -342,6 +346,12 @@ app:
     java8:
       api:
         default: 'http://localhost:8080/java'
+    go:
+      api:
+        default: 'http://localhost:8080/go'
+    rust:
+      api:
+        default: 'http://localhost:8080/rust'
     # R
     r3:
       api:

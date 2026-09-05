@@ -1,5 +1,5 @@
 # FROM phusion/passenger-nodejs:2.0.1
-FROM python:3.10-bullseye
+FROM python:3.10-bookworm
 
 # ARG DEBIAN_FRONTEND=noninteractive
 
@@ -24,7 +24,7 @@ ENV HOME /home/trinket
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash
 
 ENV NVM_DIR /home/trinket/.nvm
-ENV NODE_VERSION 14.21.1
+ENV NODE_VERSION 20.19.0
 
 SHELL ["/bin/bash", "-c"]
 

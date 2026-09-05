@@ -1,5 +1,5 @@
-# Use Node 16 LTS (compatible with updated packages)
-FROM node:16-bullseye
+# Use a Node version supported by the current dependency tree.
+FROM node:20.19-bookworm
 
 SHELL ["/bin/bash", "-c"]
 

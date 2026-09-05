@@ -3,7 +3,7 @@
     "port": 8200,
     "corsOrigins": ["http://localhost:3000", "http://localhost:3001"],
     "generatedDir": "/tmp/java-generated",
-    "generatedUrl": "http://localhost:8200/java-generated",
+    "generatedUrl": "http://localhost:8080/java-generated",
     "cleanup": {
       "enabled": true,
       "maxAgeHours": 24,
@@ -11,6 +11,6 @@
     }
   },
   "shells": [
-    "http://localhost:8210"
+    "http://java-shell:8010"
   ]
 }

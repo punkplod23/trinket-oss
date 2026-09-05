@@ -1,0 +1,29 @@
+{% extends "embed/base.html" %}
+
+{% block title %}Go{% endblock %}
+{% block embed_lang %}go{% endblock %}
+{% block head_styles %}<link rel="stylesheet" href="{{ '/css/compiled.css' | cachePrefix }}">{% endblock %}
+
+{% block embed_content %}
+<link rel="stylesheet" href="{{ '/css/compiled.css' | cachePrefix }}">
+<div class="compiled-editor">
+  <div class="compiled-toolbar">
+    <strong>Go</strong>
+    <button id="compiled-run" type="button">Run</button>
+  </div>
+  <textarea id="compiled-code" spellcheck="false">package main
+
+import "fmt"
+
+func main() {
+    fmt.Println("Hello, Go!")
+}
+</textarea>
+  <pre id="compiled-output" aria-live="polite"></pre>
+</div>
+{% endblock %}
+
+{% block body_scripts %}
+<script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
+<script src="{{ '/js/embed/compiled.js' | cachePrefix }}"></script>
+{% endblock %}

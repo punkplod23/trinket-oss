@@ -3,7 +3,7 @@
     "port": 8100,
     "corsOrigins": ["http://localhost:3000", "http://localhost:3001"],
     "generatedDir": "/tmp/python-generated",
-    "generatedUrl": "http://localhost:8100/python-generated",
+    "generatedUrl": "http://localhost:8080/python3-generated",
     "cleanup": {
       "enabled": true,
       "maxAgeHours": 24,
@@ -11,6 +11,6 @@
     }
   },
   "shells": [
-    "http://localhost:8110"
+    "http://python3-shell:8010"
   ]
 }

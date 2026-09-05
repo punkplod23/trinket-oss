@@ -7,6 +7,9 @@
 # =============================================================================
 
 app:
+  embed:
+    skulpt:
+      local: true
   url:
     protocol: http
     hostname: localhost
@@ -19,6 +22,10 @@ app:
         password: 'change-this-to-a-secure-password-min-32-chars!'
         domain: ''
         isSecure: false  # Set true in production with HTTPS
+
+features:
+  trinkets:
+    python3: true
 
 # =============================================================================
 # DATABASE
